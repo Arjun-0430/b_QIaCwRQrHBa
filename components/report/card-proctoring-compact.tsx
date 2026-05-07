@@ -72,10 +72,10 @@ export function CardProctoringCompact({ proctoring }: CardProctoringCompactProps
 
   return (
     <div
-      className={`rounded-lg p-3 border bg-gradient-to-br ${gradient.bg} ${gradient.border}`}
-      style={{ maxHeight: "90px" }}
+      className={`rounded-lg p-4 border bg-gradient-to-br ${gradient.bg} ${gradient.border}`}
+      style={{ minHeight: "120px" }}
     >
-      <h2 className="text-[10px] uppercase tracking-[0.08em] text-[#6B7280] font-semibold mb-2 flex items-center gap-1.5">
+      <h2 className="text-[10px] uppercase tracking-[0.08em] text-[#6B7280] font-semibold mb-3 flex items-center gap-1.5">
         <div 
           className="w-1.5 h-1.5 rounded-full"
           style={{ background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})` }}
@@ -83,7 +83,7 @@ export function CardProctoringCompact({ proctoring }: CardProctoringCompactProps
         Integrity Monitoring
       </h2>
 
-      <div className="grid grid-cols-3 gap-4 items-center">
+      <div className="grid grid-cols-3 gap-6 items-center">
         {/* Integrity Score */}
         <div className="flex items-center gap-3">
           <IntegrityRing score={proctoring.integrityScore} gradient={gradient} />
