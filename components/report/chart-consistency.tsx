@@ -44,7 +44,7 @@ export function ChartConsistency({ sections }: ChartConsistencyProps) {
   }
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-violet-200 bg-gradient-to-br from-violet-50 to-purple-50/50 p-3" style={{ height: "60px" }}>
+    <div className="relative overflow-hidden rounded-lg border border-violet-200 bg-gradient-to-br from-violet-50 to-purple-50/50 p-3" style={{ height: "60px", breakInside: 'avoid', pageBreakInside: 'avoid' }}>
       <div className="flex items-center justify-between mb-1">
         <h3 className="text-[11px] font-semibold text-[#1E2A4A] flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-purple-500" />

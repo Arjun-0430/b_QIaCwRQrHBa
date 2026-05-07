@@ -31,7 +31,7 @@ export function ChartBullet({ sections }: ChartBulletProps) {
   const baseId = useId();
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-teal-200 bg-gradient-to-br from-teal-50 to-emerald-50/50 p-3">
+    <div className="relative overflow-hidden rounded-lg border border-teal-200 bg-gradient-to-br from-teal-50 to-emerald-50/50 p-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
       <h3 className="text-[11px] font-semibold text-[#1E2A4A] mb-2 flex items-center gap-1.5">
         <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500" />
         Score Distribution

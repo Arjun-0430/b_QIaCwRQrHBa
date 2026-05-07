@@ -17,7 +17,7 @@ export function CardKeyAreas({ keyAreas }: CardKeyAreasProps) {
   const displayAreas = keyAreas.slice(0, 3);
   
   return (
-    <div className="relative overflow-hidden rounded-lg border border-amber-200 bg-white" style={{ maxHeight: "180px" }}>
+    <div className="relative overflow-hidden rounded-lg border border-amber-200 bg-white" style={{ maxHeight: "180px", breakInside: 'avoid', pageBreakInside: 'avoid' }}>
       {/* Header with gradient */}
       <div className="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center gap-2">
         <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">

@@ -55,7 +55,7 @@ export function CardSectionGrid({ sections }: CardSectionGridProps) {
   );
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "320px" }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "320px", breakInside: 'avoid', pageBreakInside: 'avoid' }}>
       {/* Header with gradient */}
       <div className="px-4 py-2 bg-gradient-to-r from-[#1E3A5F] to-[#2D4A73] flex items-center justify-between">
         <h2 className="text-[12px] font-semibold text-white flex items-center gap-2">
