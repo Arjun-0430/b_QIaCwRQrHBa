@@ -21,7 +21,7 @@ export function CardSupportingFlags({
   professionalNote,
 }: CardSupportingFlagsProps) {
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "80px" }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ height: "auto" }}>
       <div className="px-4 py-2 bg-gradient-to-r from-rose-500 to-pink-500 flex items-center gap-2">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-rose-200">
           <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />

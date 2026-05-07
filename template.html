@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Assessment Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        width: 210mm;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color-adjust: exact;
+      }
+
+      .report-page {
+        width: 794px;
+        min-height: 1123px;
+        margin: 0;
+        padding: 32px 36px;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
+
+      .report-page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .report-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color-adjust: exact;
+      }
+
+      [style*="background"], [class*="bg-"] {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color-adjust: exact;
+      }
+
+      .pages-container {
+        padding: 0;
+        gap: 0;
+      }
+    }
+
+    .pages-container {
+      width: 100%;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      min-height: 100vh;
+      background: #f5f5f7;
+    }
+
+    .report-page {
+      width: 794px;
+      min-height: 1123px;
+      padding: 32px 36px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .report-header {
+      height: 56px;
+      width: calc(100% + 72px);
+      margin: -32px -36px 24px -36px;
+      padding: 0 36px;
+      background-color: #1E3A5F;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      color: white;
+    }
+
+    .report-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .report-header-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #1E3A5F;
+    }
+
+    .report-header-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .report-header-title-main {
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .report-header-title-sub {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .report-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .report-header-candidate {
+      text-align: right;
+    }
+
+    .report-header-candidate-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .report-header-candidate-date {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .report-header-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .report-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .report-content > div {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .report-footer {
+      height: 36px;
+      width: calc(100% + 72px);
+      margin: auto -36px -32px -36px;
+      padding: 0 36px;
+      background: #f9f9f9;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      font-size: 10px;
+      color: #6b7280;
+    }
+
+    /* Card Styles */
+    .card {
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      background: white;
+      overflow: hidden;
+      height: auto;
+    }
+
+    .card-header {
+      padding: 8px 16px;
+      background: linear-gradient(to right, #d97706, #fbbf24);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-content {
+      padding: 12px;
+    }
+
+    .card-section {
+      margin-bottom: 12px;
+    }
+
+    .card-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fffbeb;
+      border-left: 3px solid #fbbf24;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .section-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d97706, #fbbf24);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-content {
+      flex: 1;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 12px;
+      color: #1e2a4a;
+      margin-bottom: 4px;
+    }
+
+    .section-text {
+      font-size: 11px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .grid-cols-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-cols-3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /* Charts */
+    .chart-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Verdict Banner */
+    .verdict-banner {
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #0d7377, #14b8a6);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .verdict-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .verdict-label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .verdict-label-small {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .verdict-verdict {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .verdict-confidence {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+
+    .verdict-confidence-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .verdict-confidence-value {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* Insight Blocks */
+    .insight-block {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    .insight-title {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .insight-text {
+      font-size: 11px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+
+    /* Recommendation Columns */
+    .rec-column {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      height: auto;
+    }
+
+    .rec-column-title {
+      font-size: 9px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1e2a4a;
+    }
+
+    .rec-bullet-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .rec-bullet-item {
+      font-size: 12px;
+      color: #1e2a4a;
+      margin-bottom: 4px;
+      padding-left: 12px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .rec-bullet-item:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* Proctoring Metrics */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .metric-tile {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .metric-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+
+    .metric-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e2a4a;
+    }
+
+    /* Comment placeholders */
+    .placeholder {
+      color: #9ca3af;
+      font-style: italic;
+      font-size: 10px;
+    }
+
+    .chart-placeholder {
+      width: 100%;
+      height: 280px;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    /* Section Row Grid */
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-grid-item {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    .section-score {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e2a4a;
+      margin-bottom: 4px;
+    }
+
+    .section-stat {
+      font-size: 10px;
+      color: #6b7280;
+      margin-bottom: 2px;
+    }
+
+    /* Radar Chart Container */
+    .radar-chart-container {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #c7d2fe;
+      background: linear-gradient(to bottom right, #f0f4ff, #f5f3ff);
+    }
+
+    /* Time Accuracy Chart Container */
+    .time-accuracy-container {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #bae6fd;
+      background: linear-gradient(to bottom right, #f0f9ff, #f0f9ff);
+    }
+  </style>
+</head>
+<body>
+<div class="pages-container">
+
+  <!-- ============ PAGE 1 ============ -->
+  <div class="report-page">
+    <header class="report-header">
+      <div class="report-header-left">
+        <div class="report-header-logo">🎯</div>
+        <div class="report-header-title">
+          <div class="report-header-title-main">Candidate Assessment Report</div>
+          <div class="report-header-title-sub"><!-- {{ASSESSMENT_NAME}} --></div>
+        </div>
+      </div>
+      <div class="report-header-right">
+        <div class="report-header-candidate">
+          <div class="report-header-candidate-name"><!-- {{CANDIDATE_NAME}} --></div>
+          <div class="report-header-candidate-date"><!-- {{START_TIME}} --></div>
+        </div>
+        <div class="report-header-avatar"><!-- {{INITIALS}} --></div>
+      </div>
+    </header>
+
+    <div class="report-content">
+      <!-- Candidate Attempt Card -->
+      <div class="card">
+        <div class="card-header">📋 Candidate & Attempt Details</div>
+        <div class="card-content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Candidate Name</div>
+              <div style="font-size: 12px; font-weight: 600; color: #1e2a4a;"><!-- {{CANDIDATE_NAME}} --></div>
+            </div>
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Email</div>
+              <div style="font-size: 12px; font-weight: 600; color: #1e2a4a;"><!-- {{CANDIDATE_EMAIL}} --></div>
+            </div>
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Candidate ID</div>
+              <div style="font-size: 12px; font-weight: 600; color: #1e2a4a;"><!-- {{CANDIDATE_ID}} --></div>
+            </div>
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Assessment</div>
+              <div style="font-size: 12px; font-weight: 600; color: #1e2a4a;"><!-- {{ASSESSMENT_NAME}} --></div>
+            </div>
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Start Time</div>
+              <div style="font-size: 12px; color: #1e2a4a;"><!-- {{START_TIME}} --></div>
+            </div>
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Duration</div>
+              <div style="font-size: 12px; color: #1e2a4a;"><!-- {{DURATION}} --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overall Performance Card -->
+      <div class="card">
+        <div class="card-header">📊 Overall Performance</div>
+        <div class="card-content">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px;">
+            <div style="text-align: center; padding: 12px; background: #f0fdf4; border-radius: 6px;">
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Score</div>
+              <div style="font-size: 20px; font-weight: 700; color: #16a34a;"><!-- {{OVERALL_SCORE}} -->%</div>
+            </div>
+            <div style="text-align: center; padding: 12px; background: #fef3c7; border-radius: 6px;">
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Accuracy</div>
+              <div style="font-size: 20px; font-weight: 700; color: #d97706;"><!-- {{OVERALL_ACCURACY}} -->%</div>
+            </div>
+            <div style="text-align: center; padding: 12px; background: #ede9fe; border-radius: 6px;">
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Percentile</div>
+              <div style="font-size: 20px; font-weight: 700; color: #7c3aed;"><!-- {{PERCENTILE}} --></div>
+            </div>
+            <div style="text-align: center; padding: 12px; background: #dbeafe; border-radius: 6px;">
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase; margin-bottom: 4px;">Band</div>
+              <div style="font-size: 12px; font-weight: 600; color: #0284c7;"><!-- {{SCORE_BAND_LABEL}} --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proctoring Compact Card -->
+      <div class="card">
+        <div class="card-header">🔒 Integrity Check</div>
+        <div class="card-content">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase;">Integrity Score</div>
+              <div style="font-size: 18px; font-weight: 700; color: #16a34a;"><!-- {{INTEGRITY_SCORE}} -->%</div>
+            </div>
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase;">Risk Level</div>
+              <div style="font-size: 12px; font-weight: 600; color: #0d7377; background: #d1fae5; padding: 4px 8px; border-radius: 4px; display: inline-block;"><!-- {{RISK_LEVEL}} --></div>
+            </div>
+            <div>
+              <div style="font-size: 11px; color: #6b7280; text-transform: uppercase;">Violations</div>
+              <div style="font-size: 18px; font-weight: 700; color: #dc2626;"><!-- {{TOTAL_VIOLATIONS}} --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Areas to Develop - VERTICAL STACKED -->
+      <div class="card">
+        <div class="card-header">✏️ Key Areas to Develop</div>
+        <div class="card-content">
+          <!-- KEY AREA 1 -->
+          <div class="section-row">
+            <div class="section-number">1</div>
+            <div class="section-content">
+              <div class="section-title"><!-- {{KEY_AREA_1_NAME}} --></div>
+              <div class="section-text"><!-- {{KEY_AREA_1_REASON}} --></div>
+            </div>
+          </div>
+
+          <!-- KEY AREA 2 -->
+          <div class="section-row">
+            <div class="section-number">2</div>
+            <div class="section-content">
+              <div class="section-title"><!-- {{KEY_AREA_2_NAME}} --></div>
+              <div class="section-text"><!-- {{KEY_AREA_2_REASON}} --></div>
+            </div>
+          </div>
+
+          <!-- KEY AREA 3 -->
+          <div class="section-row">
+            <div class="section-number">3</div>
+            <div class="section-content">
+              <div class="section-title"><!-- {{KEY_AREA_3_NAME}} --></div>
+              <div class="section-text"><!-- {{KEY_AREA_3_REASON}} --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="report-footer">
+      <span style="display: flex; align-items: center; gap: 4px;">🔐 CONFIDENTIAL</span>
+      <span style="font-family: monospace;">ID: <!-- {{REPORT_ID}} --></span>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span><!-- {{GENERATED_AT}} --></span>
+        <span style="background: #e5e7eb; padding: 2px 8px; border-radius: 3px; font-weight: 600; color: #1f2937;">Page 1 of <!-- {{TOTAL_PAGES}} --></span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============ PAGE 2 ============ -->
+  <div class="report-page">
+    <header class="report-header">
+      <div class="report-header-left">
+        <div class="report-header-logo">🎯</div>
+        <div class="report-header-title">
+          <div class="report-header-title-main">Candidate Assessment Report</div>
+          <div class="report-header-title-sub"><!-- {{ASSESSMENT_NAME}} --></div>
+        </div>
+      </div>
+      <div class="report-header-right">
+        <div class="report-header-candidate">
+          <div class="report-header-candidate-name"><!-- {{CANDIDATE_NAME}} --></div>
+          <div class="report-header-candidate-date"><!-- {{START_TIME}} --></div>
+        </div>
+        <div class="report-header-avatar"><!-- {{INITIALS}} --></div>
+      </div>
+    </header>
+
+    <div class="report-content">
+      <!-- Section Grid Card -->
+      <div class="card">
+        <div class="card-header">📈 Section Performance</div>
+        <div class="card-content">
+          <div class="section-grid">
+            <!-- {{SECTION_ROWS}} -->
+            <div class="section-grid-item">
+              <div class="section-score"><!-- {{SECTION_1_SCORE}} -->%</div>
+              <div class="section-stat"><!-- {{SECTION_1_LABEL}} --></div>
+              <div class="section-stat">Accuracy: <!-- {{SECTION_1_ACCURACY}} -->%</div>
+              <div class="section-stat">Time: <!-- {{SECTION_1_TIME}} --></div>
+            </div>
+            <div class="section-grid-item">
+              <div class="section-score"><!-- {{SECTION_2_SCORE}} -->%</div>
+              <div class="section-stat"><!-- {{SECTION_2_LABEL}} --></div>
+              <div class="section-stat">Accuracy: <!-- {{SECTION_2_ACCURACY}} -->%</div>
+              <div class="section-stat">Time: <!-- {{SECTION_2_TIME}} --></div>
+            </div>
+            <div class="section-grid-item">
+              <div class="section-score"><!-- {{SECTION_3_SCORE}} -->%</div>
+              <div class="section-stat"><!-- {{SECTION_3_LABEL}} --></div>
+              <div class="section-stat">Accuracy: <!-- {{SECTION_3_ACCURACY}} -->%</div>
+              <div class="section-stat">Time: <!-- {{SECTION_3_TIME}} --></div>
+            </div>
+            <div class="section-grid-item">
+              <div class="section-score"><!-- {{SECTION_4_SCORE}} -->%</div>
+              <div class="section-stat"><!-- {{SECTION_4_LABEL}} --></div>
+              <div class="section-stat">Accuracy: <!-- {{SECTION_4_ACCURACY}} -->%</div>
+              <div class="section-stat">Time: <!-- {{SECTION_4_TIME}} --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radar Chart Card -->
+      <div class="card">
+        <div class="card-header">🎯 Competency Profile</div>
+        <div class="radar-chart-container">
+          <!-- CHART: Recalculate from {{SECTION_SCORES}} -->
+          <svg width="300" height="300" viewBox="0 0 300 300" style="margin: 0 auto; display: block;">
+            <defs>
+              <linearGradient id="radarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <!-- Grid rings -->
+            <circle cx="150" cy="150" r="30" fill="none" stroke="#E0E7FF" stroke-width="1"/>
+            <circle cx="150" cy="150" r="60" fill="none" stroke="#E0E7FF" stroke-width="1"/>
+            <circle cx="150" cy="150" r="90" fill="none" stroke="#E0E7FF" stroke-width="1"/>
+            <circle cx="150" cy="150" r="120" fill="none" stroke="#C7D2FE" stroke-width="1.5"/>
+            <!-- Axis lines -->
+            <line x1="150" y1="150" x2="150" y2="30" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="150" y1="150" x2="253.9" y2="62.1" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="150" y1="150" x2="253.9" y2="237.9" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="150" y1="150" x2="150" y2="270" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="150" y1="150" x2="46.1" y2="237.9" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="2,2"/>
+            <line x1="150" y1="150" x2="46.1" y2="62.1" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="2,2"/>
+            <!-- Data polygon (example) -->
+            <path d="M 150 54 L 212.9 99.6 L 197.6 192 L 150 246 L 102.4 192 L 87.1 99.6 Z" fill="rgba(79, 70, 229, 0.15)" stroke="url(#radarGradient)" stroke-width="2"/>
+            <!-- Data points -->
+            <circle cx="150" cy="54" r="4" fill="url(#radarGradient)" stroke="white" stroke-width="1.5"/>
+            <circle cx="212.9" cy="99.6" r="4" fill="url(#radarGradient)" stroke="white" stroke-width="1.5"/>
+            <circle cx="197.6" cy="192" r="4" fill="url(#radarGradient)" stroke="white" stroke-width="1.5"/>
+            <circle cx="150" cy="246" r="4" fill="url(#radarGradient)" stroke="white" stroke-width="1.5"/>
+            <circle cx="102.4" cy="192" r="4" fill="url(#radarGradient)" stroke="white" stroke-width="1.5"/>
+            <circle cx="87.1" cy="99.6" r="4" fill="url(#radarGradient)" stroke="white" stroke-width="1.5"/>
+            <!-- Labels -->
+            <text x="150" y="20" font-size="8" fill="#6B7280" text-anchor="middle" font-weight="500">Quant</text>
+            <text x="260" y="75" font-size="8" fill="#6B7280" text-anchor="middle" font-weight="500">Cognitive</text>
+            <text x="260" y="230" font-size="8" fill="#6B7280" text-anchor="middle" font-weight="500">Technical</text>
+            <text x="150" y="285" font-size="8" fill="#6B7280" text-anchor="middle" font-weight="500">Verbal</text>
+            <text x="40" y="230" font-size="8" fill="#6B7280" text-anchor="middle" font-weight="500">Abstract</text>
+            <text x="40" y="75" font-size="8" fill="#6B7280" text-anchor="middle" font-weight="500">Coding</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Time-Accuracy Chart Card -->
+      <div class="card">
+        <div class="card-header">⚡ Speed vs Accuracy Analysis</div>
+        <div class="time-accuracy-container">
+          <!-- CHART: Recalculate from {{SECTION_SCORES}} -->
+          <svg width="100%" height="280" viewBox="0 0 560 280" style="display: block;">
+            <defs>
+              <linearGradient id="point1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#16A34A;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <!-- Quadrant backgrounds -->
+            <rect x="240" y="35" width="285" height="210" fill="rgba(22, 163, 74, 0.08)"/>
+            <rect x="240" y="35" width="285" height="110" fill="rgba(217, 119, 6, 0.08)"/>
+            <rect x="50" y="145" width="190" height="100" fill="rgba(217, 119, 6, 0.08)"/>
+            <rect x="50" y="35" width="190" height="110" fill="rgba(220, 38, 38, 0.08)"/>
+            <!-- Threshold lines -->
+            <line x1="240" y1="35" x2="240" y2="245" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="50" y1="145" x2="525" y2="145" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <!-- X axis -->
+            <line x1="50" y1="245" x2="525" y2="245" stroke="#BAE6FD" stroke-width="1.5"/>
+            <text x="287.5" y="265" font-size="10" fill="#0284C7" text-anchor="middle" font-weight="600">Accuracy (%)</text>
+            <!-- X labels -->
+            <text x="50" y="260" font-size="8" fill="#7DD3FC" text-anchor="middle" font-weight="500">0%</text>
+            <text x="168.75" y="260" font-size="8" fill="#7DD3FC" text-anchor="middle" font-weight="500">25%</text>
+            <text x="287.5" y="260" font-size="8" fill="#7DD3FC" text-anchor="middle" font-weight="500">50%</text>
+            <text x="406.25" y="260" font-size="8" fill="#7DD3FC" text-anchor="middle" font-weight="500">75%</text>
+            <text x="525" y="260" font-size="8" fill="#7DD3FC" text-anchor="middle" font-weight="500">100%</text>
+            <!-- Y axis -->
+            <line x1="50" y1="35" x2="50" y2="245" stroke="#BAE6FD" stroke-width="1.5"/>
+            <text x="12" y="140" font-size="10" fill="#0284C7" text-anchor="middle" font-weight="600" transform="rotate(-90, 12, 140)">Time (min)</text>
+            <!-- Quadrant labels -->
+            <text x="55" y="47" font-size="8" fill="#DC2626" font-weight="600">Slow + Inaccurate</text>
+            <text x="245" y="47" font-size="8" fill="#D97706" font-weight="600">Slow + Accurate</text>
+            <text x="55" y="237" font-size="8" fill="#D97706" font-weight="600">Fast + Inaccurate</text>
+            <text x="245" y="237" font-size="8" fill="#16A34A" font-weight="600">Fast + Accurate</text>
+            <!-- Data points (example positions) -->
+            <circle cx="267" cy="110" r="8" fill="url(#point1)"/>
+            <circle cx="267" cy="110" r="3" fill="white"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <footer class="report-footer">
+      <span style="display: flex; align-items: center; gap: 4px;">🔐 CONFIDENTIAL</span>
+      <span style="font-family: monospace;">ID: <!-- {{REPORT_ID}} --></span>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span><!-- {{GENERATED_AT}} --></span>
+        <span style="background: #e5e7eb; padding: 2px 8px; border-radius: 3px; font-weight: 600; color: #1f2937;">Page 2 of <!-- {{TOTAL_PAGES}} --></span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============ PAGE 3 ============ -->
+  <div class="report-page">
+    <header class="report-header">
+      <div class="report-header-left">
+        <div class="report-header-logo">🎯</div>
+        <div class="report-header-title">
+          <div class="report-header-title-main">Candidate Assessment Report</div>
+          <div class="report-header-title-sub"><!-- {{ASSESSMENT_NAME}} --></div>
+        </div>
+      </div>
+      <div class="report-header-right">
+        <div class="report-header-candidate">
+          <div class="report-header-candidate-name"><!-- {{CANDIDATE_NAME}} --></div>
+          <div class="report-header-candidate-date"><!-- {{START_TIME}} --></div>
+        </div>
+        <div class="report-header-avatar"><!-- {{INITIALS}} --></div>
+      </div>
+    </header>
+
+    <div class="report-content">
+      <!-- Performance Analysis Card - SINGLE COLUMN -->
+      <div class="card">
+        <div class="card-header">🔍 Performance Analysis</div>
+        <div class="card-content">
+          <div class="grid grid-cols-1">
+            <div class="insight-block">
+              <div class="insight-title" style="color: #0d7377;">📊 Performance Summary</div>
+              <div class="insight-text"><!-- {{INSIGHT_PERFORMANCE_SUMMARY}} --></div>
+            </div>
+            <div class="insight-block">
+              <div class="insight-title" style="color: #1e2a4a;">⚡ Speed vs Accuracy</div>
+              <div class="insight-text"><!-- {{INSIGHT_SPEED_ACCURACY}} --></div>
+            </div>
+            <div class="insight-block">
+              <div class="insight-title" style="color: #4f46e5;">📈 Consistency</div>
+              <div class="insight-text"><!-- {{INSIGHT_CONSISTENCY}} --></div>
+            </div>
+            <div class="insight-block">
+              <div class="insight-title" style="color: #16a34a;">💪 Strength Pattern</div>
+              <div class="insight-text"><!-- {{INSIGHT_STRENGTH}} --></div>
+            </div>
+            <div class="insight-block">
+              <div class="insight-title" style="color: #d97706;">⚠️ Weakness Pattern</div>
+              <div class="insight-text"><!-- {{INSIGHT_WEAKNESS}} --></div>
+            </div>
+            <div class="insight-block">
+              <div class="insight-title" style="color: #dc2626;">🛡️ Integrity Note</div>
+              <div class="insight-text"><!-- {{INSIGHT_INTEGRITY}} --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proctoring Detailed Card -->
+      <div class="card">
+        <div class="card-header">🔒 Proctoring Analysis</div>
+        <div class="card-content">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+            <div>
+              <div style="font-size: 10px; text-transform: uppercase; color: #6b7280; margin-bottom: 2px;">Integrity Score</div>
+              <div style="font-size: 16px; font-weight: 700; color: #16a34a;"><!-- {{INTEGRITY_SCORE}} -->%</div>
+            </div>
+            <div>
+              <div style="font-size: 10px; text-transform: uppercase; color: #6b7280; margin-bottom: 2px;">Risk Level</div>
+              <div style="font-size: 12px; font-weight: 600; background: #d1fae5; padding: 4px 8px; border-radius: 4px; display: inline-block; color: #0d7377;"><!-- {{RISK_LEVEL}} --></div>
+            </div>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-tile">
+              <div class="metric-label">Tab Switches</div>
+              <div class="metric-value"><!-- {{TAB_SWITCHES}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Rapid Answers</div>
+              <div class="metric-value"><!-- {{RAPID_ANSWERS}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Face Absent</div>
+              <div class="metric-value"><!-- {{FACE_ABSENT}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Gaze Away</div>
+              <div class="metric-value"><!-- {{GAZE_AWAY}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Multiple Faces</div>
+              <div class="metric-value"><!-- {{MULTIPLE_FACES}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Head Down</div>
+              <div class="metric-value"><!-- {{HEAD_DOWN}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Voice Detected</div>
+              <div class="metric-value"><!-- {{VOICE_DETECTED}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Copy/Paste</div>
+              <div class="metric-value"><!-- {{COPY_PASTE}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Fullscreen Exits</div>
+              <div class="metric-value"><!-- {{FULLSCREEN_EXITS}} --></div>
+            </div>
+            <div class="metric-tile">
+              <div class="metric-label">Total Violations</div>
+              <div class="metric-value"><!-- {{TOTAL_VIOLATIONS}} --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supporting Flags Card -->
+      <div class="card">
+        <div class="card-header">🚩 Supporting Flags</div>
+        <div class="card-content">
+          <div style="margin-bottom: 8px;">
+            <span style="display: inline-block; background: #fce7f3; border: 1px solid #fbcfe8; border-radius: 6px; padding: 6px 12px; margin-right: 8px; margin-bottom: 4px;">
+              <span style="font-size: 10px; color: #1e2a4a;"><!-- {{FLAG_1_LABEL}} --></span>
+              <span style="background: linear-gradient(135deg, #e11d48, #fb7185); color: white; font-size: 9px; font-weight: 700; border-radius: 3px; padding: 2px 6px; margin-left: 6px; display: inline-block;"><!-- {{FLAG_1_COUNT}} --></span>
+            </span>
+            <span style="display: inline-block; background: #fef3c7; border: 1px solid #fde68a; border-radius: 6px; padding: 6px 12px; margin-right: 8px; margin-bottom: 4px;">
+              <span style="font-size: 10px; color: #1e2a4a;"><!-- {{FLAG_2_LABEL}} --></span>
+              <span style="background: linear-gradient(135deg, #d97706, #fbbf24); color: white; font-size: 9px; font-weight: 700; border-radius: 3px; padding: 2px 6px; margin-left: 6px; display: inline-block;"><!-- {{FLAG_2_COUNT}} --></span>
+            </span>
+            <span style="display: inline-block; background: #f3e8ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 6px 12px; margin-bottom: 4px;">
+              <span style="font-size: 10px; color: #1e2a4a;"><!-- {{FLAG_3_LABEL}} --></span>
+              <span style="background: linear-gradient(135deg, #7c3aed, #a78bfa); color: white; font-size: 9px; font-weight: 700; border-radius: 3px; padding: 2px 6px; margin-left: 6px; display: inline-block;"><!-- {{FLAG_3_COUNT}} --></span>
+            </span>
+          </div>
+          <p style="font-size: 10px; color: #6b7280; font-style: italic; border-top: 1px solid #e5e7eb; padding-top: 8px;"><!-- {{PROFESSIONAL_NOTE}} --></p>
+        </div>
+      </div>
+
+      <!-- Recommendations Card -->
+      <div class="card">
+        <div class="verdict-banner" style="background: linear-gradient(135deg, #0d7377, #14b8a6);">
+          <div class="verdict-left">
+            <div class="verdict-label">
+              <div class="verdict-label-small">Final Recommendation</div>
+              <div class="verdict-verdict"><!-- {{HIRING_VERDICT}} --></div>
+            </div>
+          </div>
+          <div class="verdict-confidence">
+            <div class="verdict-confidence-label">Confidence</div>
+            <div class="verdict-confidence-value"><!-- {{DECISION_CONFIDENCE}} --></div>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <div class="grid grid-cols-3">
+            <div class="rec-column">
+              <div class="rec-column-title">➡️ Next Step</div>
+              <p style="font-size: 12px; color: #1e2a4a; line-height: 1.4;"><!-- {{NEXT_STEP}} --></p>
+            </div>
+
+            <div class="rec-column">
+              <div class="rec-column-title">💬 Interview Focus</div>
+              <ul class="rec-bullet-list">
+                <li class="rec-bullet-item"><!-- {{INTERVIEW_FOCUS_1}} --></li>
+                <li class="rec-bullet-item"><!-- {{INTERVIEW_FOCUS_2}} --></li>
+                <li class="rec-bullet-item"><!-- {{INTERVIEW_FOCUS_3}} --></li>
+              </ul>
+            </div>
+
+            <div class="rec-column">
+              <div class="rec-column-title">📚 Development</div>
+              <ul class="rec-bullet-list">
+                <li class="rec-bullet-item"><!-- {{DEVELOPMENT_1}} --></li>
+                <li class="rec-bullet-item"><!-- {{DEVELOPMENT_2}} --></li>
+                <li class="rec-bullet-item"><!-- {{DEVELOPMENT_3}} --></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="report-footer">
+      <span style="display: flex; align-items: center; gap: 4px;">🔐 CONFIDENTIAL</span>
+      <span style="font-family: monospace;">ID: <!-- {{REPORT_ID}} --></span>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span><!-- {{GENERATED_AT}} --></span>
+        <span style="background: #e5e7eb; padding: 2px 8px; border-radius: 3px; font-weight: 600; color: #1f2937;">Page 3 of <!-- {{TOTAL_PAGES}} --></span>
+      </div>
+    </footer>
+  </div>
+
+</div>
+</body>
+</html>

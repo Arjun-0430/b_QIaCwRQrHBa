@@ -116,13 +116,6 @@ export default function UniversalReportPage({
             />
             <CardProctoringCompact proctoring={proctoring} />
             <CardKeyAreas keyAreas={keyAreas} />
-            
-            {/* Page continuation hint */}
-            <div className="mt-auto pt-4 border-t border-slate-200 text-center">
-              <p className="text-[12px] text-slate-400 italic">
-                Continue to Page 2 for detailed section performance analysis.
-              </p>
-            </div>
           </div>
           
           <ReportFooter

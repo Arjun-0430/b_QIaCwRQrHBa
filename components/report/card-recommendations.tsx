@@ -27,7 +27,7 @@ export function CardRecommendations({
   const verdictGradient = getVerdictGradient(recommendations.verdict);
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "200px" }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ height: "auto" }}>
       {/* Verdict Banner - height: 48px */}
       <div
         className="px-4 py-3 flex items-center justify-between relative overflow-hidden"
@@ -65,20 +65,20 @@ export function CardRecommendations({
       {/* Recommendations Grid - 3 columns */}
       <div className="p-3 grid grid-cols-3 gap-3">
         {/* Next Step */}
-        <div className="bg-gradient-to-br from-sky-50 to-sky-100/50 rounded-lg p-3 border border-sky-200">
+        <div className="bg-gradient-to-br from-sky-50 to-sky-100/50 rounded-lg p-3 border border-sky-200" style={{ height: "auto" }}>
           <h3 className="text-[9px] uppercase tracking-[0.08em] text-sky-700 font-bold mb-1.5 flex items-center gap-1">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
             Next Step
           </h3>
-          <p className="text-[12px] text-[#1E2A4A] leading-snug line-clamp-3">
+          <p className="text-[12px] text-[#1E2A4A] leading-snug">
             {recommendations.nextStep}
           </p>
         </div>
 
         {/* Interview Focus Areas */}
-        <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 rounded-lg p-3 border border-teal-200">
+        <div className="bg-gradient-to-br from-teal-50 to-teal-100/50 rounded-lg p-3 border border-teal-200" style={{ height: "auto" }}>
           <h3 className="text-[9px] uppercase tracking-[0.08em] text-teal-700 font-bold mb-1.5 flex items-center gap-1">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
@@ -90,17 +90,17 @@ export function CardRecommendations({
             {recommendations.interviewFocusAreas.slice(0, 3).map((area, index) => (
               <li
                 key={index}
-                className="text-[12px] text-[#1E2A4A] flex items-start gap-1 leading-tight"
+                className="text-[12px] text-[#1E2A4A] flex items-start gap-1 leading-snug"
               >
                 <span className="w-1 h-1 rounded-full bg-teal-500 mt-1.5 flex-shrink-0" />
-                <span className="line-clamp-1">{area}</span>
+                <span>{area}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* Development Priorities */}
-        <div className="bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-lg p-3 border border-amber-200">
+        <div className="bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-lg p-3 border border-amber-200" style={{ height: "auto" }}>
           <h3 className="text-[9px] uppercase tracking-[0.08em] text-amber-700 font-bold mb-1.5 flex items-center gap-1">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 20h9" />
@@ -112,10 +112,10 @@ export function CardRecommendations({
             {recommendations.developmentPriorities.slice(0, 3).map((priority, index) => (
               <li
                 key={index}
-                className="text-[12px] text-[#1E2A4A] flex items-start gap-1 leading-tight"
+                className="text-[12px] text-[#1E2A4A] flex items-start gap-1 leading-snug"
               >
                 <span className="w-1 h-1 rounded-full bg-amber-500 mt-1.5 flex-shrink-0" />
-                <span className="line-clamp-1">{priority}</span>
+                <span>{priority}</span>
               </li>
             ))}
           </ul>

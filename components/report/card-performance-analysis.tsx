@@ -26,7 +26,7 @@ function InsightBlock({
   text: string;
 }) {
   return (
-    <div className={`rounded-lg p-3 bg-gradient-to-br ${style.bg} border ${style.border}`} style={{ minHeight: "80px" }}>
+    <div className={`rounded-lg p-3 bg-gradient-to-br ${style.bg} border ${style.border}`} style={{ height: "auto" }}>
       <div className="flex items-start gap-2">
         <div 
           className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
@@ -43,7 +43,7 @@ function InsightBlock({
           >
             {label}
           </h4>
-          <p className="text-[#6B7280] text-[11px] leading-snug line-clamp-3">{text}</p>
+          <p className="text-[#6B7280] text-[11px] leading-snug">{text}</p>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@ export function CardPerformanceAnalysis({
       : insightStyles[5];
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "280px" }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ height: "auto" }}>
       {/* Header */}
       <div className="px-4 py-2 bg-gradient-to-r from-[#4F46E5] to-[#818CF8]">
         <h2 className="text-[12px] font-semibold text-white flex items-center gap-2">
@@ -74,7 +74,7 @@ export function CardPerformanceAnalysis({
         </h2>
       </div>
 
-      <div className="p-3 grid grid-cols-2 gap-2">
+      <div className="p-3 grid grid-cols-1 gap-2">
         <InsightBlock
           style={insightStyles[0]}
           label="Performance Summary"

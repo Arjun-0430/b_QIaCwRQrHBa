@@ -22,9 +22,9 @@ function getShortLabel(label: string): string {
 }
 
 export function ChartRadar({ sections }: ChartRadarProps) {
-  const centerX = 120;
-  const centerY = 120;
-  const maxRadius = 70;
+  const centerX = 150;
+  const centerY = 150;
+  const maxRadius = 120;
   const levels = [25, 50, 75, 100];
   const gradientId = useId();
 
@@ -55,7 +55,7 @@ export function ChartRadar({ sections }: ChartRadarProps) {
         <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" />
         Competency Profile
       </h3>
-      <svg width="240" height="240" viewBox="0 0 240 240" className="mx-auto">
+      <svg width="300" height="300" viewBox="0 0 300 300" className="mx-auto">
         <defs>
           <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#4F46E5" />

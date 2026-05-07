@@ -17,7 +17,7 @@ export function CardKeyAreas({ keyAreas }: CardKeyAreasProps) {
   const displayAreas = keyAreas.slice(0, 3);
   
   return (
-    <div className="relative overflow-hidden rounded-lg border border-amber-200 bg-white" style={{ maxHeight: "180px" }}>
+    <div className="relative overflow-hidden rounded-lg border border-amber-200 bg-white" style={{ height: "auto" }}>
       {/* Header with gradient */}
       <div className="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center gap-2">
         <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
@@ -31,27 +31,26 @@ export function CardKeyAreas({ keyAreas }: CardKeyAreasProps) {
         </h2>
       </div>
 
-      {/* Areas List - Compact */}
-      <div className="p-3 flex gap-2">
+      {/* Areas List - Vertical Stacked */}
+      <div className="p-4 flex flex-col gap-2">
         {displayAreas.map((area, index) => {
-          const colors = areaColors[index % areaColors.length];
-          
           return (
             <div
               key={area.area}
-              className={`flex-1 flex items-start gap-2 rounded-lg p-2 bg-gradient-to-r ${colors.bg} border ${colors.border}`}
+              className="flex items-start gap-3 rounded-lg p-3 bg-[#FFFBEB] border-l-4 border-amber-300"
+              style={{ borderLeft: "3px solid #FBBF24" }}
             >
               <div 
-                className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
                 style={{ 
-                  background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`
+                  background: "linear-gradient(135deg, #D97706, #FBBF24)"
                 }}
               >
-                <span className="text-white font-bold text-[10px]">{index + 1}</span>
+                <span className="text-white font-bold text-[11px]">{index + 1}</span>
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-bold text-[#1E2A4A] text-[12px] leading-tight">{area.area}</h3>
-                <p className="text-[#6B7280] text-[11px] mt-0.5 leading-tight line-clamp-2">{area.reason}</p>
+                <p className="text-[#6B7280] text-[11px] mt-1 leading-snug">{area.reason}</p>
               </div>
             </div>
           );

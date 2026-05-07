@@ -21,8 +21,8 @@ function getBandGradient(band: string): { from: string; to: string } {
 }
 
 export function ChartTimeAccuracy({ sections }: ChartTimeAccuracyProps) {
-  const chartWidth = 340;
-  const chartHeight = 220;
+  const chartWidth = 560;
+  const chartHeight = 280;
   const padding = { top: 35, right: 35, bottom: 40, left: 50 };
   const plotWidth = chartWidth - padding.left - padding.right;
   const plotHeight = chartHeight - padding.top - padding.bottom;
@@ -52,7 +52,7 @@ export function ChartTimeAccuracy({ sections }: ChartTimeAccuracyProps) {
       </h3>
 
       <svg
-        width={chartWidth}
+        width="100%"
         height={chartHeight}
         viewBox={`0 0 ${chartWidth} ${chartHeight}`}
         className="mx-auto"

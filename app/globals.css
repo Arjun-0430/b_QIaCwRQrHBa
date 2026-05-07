@@ -247,6 +247,12 @@
   overflow: hidden;
 }
 
+/* Page break support for cards */
+.report-content > div {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
 /* Report Card Styling */
 .report-card {
   padding: 16px;
