@@ -45,7 +45,7 @@ export function ChartTimeAccuracy({ sections }: ChartTimeAccuracyProps) {
   const medianY = timeToY(medianTime);
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-sky-200 bg-gradient-to-br from-sky-50 to-blue-50/50 p-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+    <div className="relative overflow-hidden rounded-lg border border-sky-200 bg-gradient-to-br from-sky-50 to-blue-50/50 p-3">
       <h3 className="text-[12px] font-semibold text-[#1E2A4A] mb-2 flex items-center gap-1.5">
         <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-sky-500 to-blue-500" />
         Speed vs Accuracy Analysis

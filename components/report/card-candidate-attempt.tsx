@@ -41,7 +41,7 @@ export function CardCandidateAttempt({
   const isCompleted = attempt.status === "completed";
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white">
       {/* Gradient accent bar */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1E3A5F] via-[#0D7377] to-[#14B8A6]" />
       

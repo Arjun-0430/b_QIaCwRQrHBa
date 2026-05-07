@@ -27,7 +27,7 @@ export function CardRecommendations({
   const verdictGradient = getVerdictGradient(recommendations.verdict);
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "200px", breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "200px" }}>
       {/* Verdict Banner - height: 48px */}
       <div
         className="px-4 py-3 flex items-center justify-between relative overflow-hidden"

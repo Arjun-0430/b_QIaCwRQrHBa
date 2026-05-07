@@ -114,7 +114,7 @@ export function CardOverallPerformance({
   const isCompleted = attempt.status === "completed";
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white">
       <div className="relative p-4">
         <h2 className="text-[11px] uppercase tracking-[0.08em] text-[#0D7377] font-semibold mb-3 flex items-center gap-2">
           <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#0D7377] to-[#14B8A6]" />

@@ -21,13 +21,13 @@ function getRiskGradient(risk: string): { from: string; to: string; bg: string; 
 }
 
 function IntegrityRing({ score, gradient }: { score: number; gradient: { from: string; to: string } }) {
-  const radius = 28;
+  const radius = 26;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (score / 100) * circumference;
   const gradientId = useId();
 
   return (
-    <svg width="72" height="72" viewBox="0 0 72 72">
+    <svg width="64" height="64" viewBox="0 0 64 64">
       <defs>
         <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor={gradient.from} />
@@ -35,16 +35,16 @@ function IntegrityRing({ score, gradient }: { score: number; gradient: { from: s
         </linearGradient>
       </defs>
       <circle
-        cx="36"
-        cy="36"
+        cx="32"
+        cy="32"
         r={radius}
         fill="none"
         stroke="#E5E7EB"
         strokeWidth="6"
       />
       <circle
-        cx="36"
-        cy="36"
+        cx="32"
+        cy="32"
         r={radius}
         fill="none"
         stroke={`url(#${gradientId})`}
@@ -52,11 +52,11 @@ function IntegrityRing({ score, gradient }: { score: number; gradient: { from: s
         strokeLinecap="round"
         strokeDasharray={circumference}
         strokeDashoffset={strokeDashoffset}
-        transform="rotate(-90 36 36)"
+        transform="rotate(-90 32 32)"
       />
       <text
-        x="36"
-        y="40"
+        x="32"
+        y="36"
         textAnchor="middle"
         className="text-[16px] font-bold"
         fill="#1E2A4A"
@@ -72,8 +72,8 @@ export function CardProctoringCompact({ proctoring }: CardProctoringCompactProps
 
   return (
     <div
-      className={`rounded-lg py-4 px-4 border bg-gradient-to-br ${gradient.bg} ${gradient.border}`}
-      style={{ maxHeight: "110px", breakInside: 'avoid', pageBreakInside: 'avoid' }}
+      className={`rounded-lg p-3 border bg-gradient-to-br ${gradient.bg} ${gradient.border}`}
+      style={{ maxHeight: "90px" }}
     >
       <h2 className="text-[10px] uppercase tracking-[0.08em] text-[#6B7280] font-semibold mb-2 flex items-center gap-1.5">
         <div 

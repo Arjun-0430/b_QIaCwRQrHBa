@@ -50,7 +50,7 @@ export function ChartRadar({ sections }: ChartRadarProps) {
   });
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50/50 p-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+    <div className="relative overflow-hidden rounded-lg border border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50/50 p-3">
       <h3 className="text-[12px] font-semibold text-[#1E2A4A] mb-2 flex items-center gap-1.5">
         <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" />
         Competency Profile

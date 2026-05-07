@@ -82,7 +82,7 @@ export function CardProctoringDetailed({ proctoring }: CardProctoringDetailedPro
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "220px", breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "220px" }}>
       {/* Header */}
       <div className="px-4 py-2 bg-gradient-to-r from-slate-800 to-slate-700 flex items-center justify-between">
         <h2 className="text-[12px] font-semibold text-white flex items-center gap-2">

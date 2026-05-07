@@ -62,7 +62,7 @@ export function CardPerformanceAnalysis({
       : insightStyles[5];
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "280px", breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "280px" }}>
       {/* Header */}
       <div className="px-4 py-2 bg-gradient-to-r from-[#4F46E5] to-[#818CF8]">
         <h2 className="text-[12px] font-semibold text-white flex items-center gap-2">
