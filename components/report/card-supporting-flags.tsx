@@ -21,20 +21,18 @@ export function CardSupportingFlags({
   professionalNote,
 }: CardSupportingFlagsProps) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-      <div className="px-6 py-4 bg-gradient-to-r from-rose-500 to-pink-500">
-        <h2 className="text-sm font-semibold text-white flex items-center gap-2">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-rose-200">
-            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-            <line x1="4" x2="4" y1="22" y2="15" />
-          </svg>
-          Supporting Flags & Notes
-        </h2>
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "80px" }}>
+      <div className="px-4 py-2 bg-gradient-to-r from-rose-500 to-pink-500 flex items-center gap-2">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-rose-200">
+          <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+          <line x1="4" x2="4" y1="22" y2="15" />
+        </svg>
+        <h2 className="text-[11px] font-semibold text-white">Supporting Flags</h2>
       </div>
 
-      <div className="p-5 space-y-4">
-        {/* Flag Categories */}
-        <div className="flex flex-wrap gap-3">
+      <div className="p-2 flex items-center gap-3">
+        {/* Flag Categories - Inline */}
+        <div className="flex flex-wrap gap-1.5">
           {flagCategories.map((flag, index) => {
             const colors = flagColors[index % flagColors.length];
             const hasValue = flag.count > 0;
@@ -42,16 +40,15 @@ export function CardSupportingFlags({
             return (
               <div
                 key={flag.type}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-br ${colors.bg} ${colors.border} border transition-all hover:shadow-md`}
+                className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-gradient-to-br ${colors.bg} ${colors.border} border`}
               >
-                <span className="text-sm font-medium text-[#1E2A4A]">{flag.label}</span>
+                <span className="text-[10px] font-medium text-[#1E2A4A]">{flag.label}</span>
                 <span
-                  className="px-2 py-0.5 rounded-lg text-xs font-bold text-white shadow-sm"
+                  className="px-1.5 py-0.5 rounded text-[9px] font-bold text-white"
                   style={{ 
                     background: hasValue 
                       ? `linear-gradient(135deg, ${colors.accent.from}, ${colors.accent.to})`
-                      : "linear-gradient(135deg, #9CA3AF, #D1D5DB)",
-                    boxShadow: hasValue ? `0 2px 6px ${colors.accent.from}40` : "none"
+                      : "linear-gradient(135deg, #9CA3AF, #D1D5DB)"
                   }}
                 >
                   {flag.count}
@@ -61,19 +58,9 @@ export function CardSupportingFlags({
           })}
         </div>
 
-        {/* Professional Note */}
-        <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-xl p-5 border border-slate-200">
-          <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center flex-shrink-0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 20h9" />
-                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-              </svg>
-            </div>
-            <p className="text-sm text-[#4B5563] italic leading-relaxed">
-              &ldquo;{professionalNote}&rdquo;
-            </p>
-          </div>
+        {/* Professional Note - Compact */}
+        <div className="flex-1 text-[10px] text-[#6B7280] italic line-clamp-1 border-l border-slate-200 pl-3">
+          &ldquo;{professionalNote}&rdquo;
         </div>
       </div>
     </div>

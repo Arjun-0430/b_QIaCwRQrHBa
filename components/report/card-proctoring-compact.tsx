@@ -1,6 +1,7 @@
 "use client";
 
 import { Proctoring } from "@/lib/mock-report-data";
+import { useId } from "react";
 
 interface CardProctoringCompactProps {
   proctoring: Proctoring;
@@ -20,13 +21,13 @@ function getRiskGradient(risk: string): { from: string; to: string; bg: string; 
 }
 
 function IntegrityRing({ score, gradient }: { score: number; gradient: { from: string; to: string } }) {
-  const radius = 40;
+  const radius = 26;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (score / 100) * circumference;
-  const gradientId = `integrity-gradient-${Math.random().toString(36).substr(2, 9)}`;
+  const gradientId = useId();
 
   return (
-    <svg width="100" height="100" viewBox="0 0 100 100">
+    <svg width="64" height="64" viewBox="0 0 64 64">
       <defs>
         <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor={gradient.from} />
@@ -34,31 +35,30 @@ function IntegrityRing({ score, gradient }: { score: number; gradient: { from: s
         </linearGradient>
       </defs>
       <circle
-        cx="50"
-        cy="50"
+        cx="32"
+        cy="32"
         r={radius}
         fill="none"
         stroke="#E5E7EB"
-        strokeWidth="8"
+        strokeWidth="6"
       />
       <circle
-        cx="50"
-        cy="50"
+        cx="32"
+        cy="32"
         r={radius}
         fill="none"
         stroke={`url(#${gradientId})`}
-        strokeWidth="8"
+        strokeWidth="6"
         strokeLinecap="round"
         strokeDasharray={circumference}
         strokeDashoffset={strokeDashoffset}
-        transform="rotate(-90 50 50)"
-        className="transition-all duration-700 ease-out"
+        transform="rotate(-90 32 32)"
       />
       <text
-        x="50"
-        y="55"
+        x="32"
+        y="36"
         textAnchor="middle"
-        className="text-2xl font-bold"
+        className="text-[16px] font-bold"
         fill="#1E2A4A"
       >
         {score}
@@ -72,27 +72,22 @@ export function CardProctoringCompact({ proctoring }: CardProctoringCompactProps
 
   return (
     <div
-      className={`rounded-xl p-5 border bg-gradient-to-br ${gradient.bg} ${gradient.border}`}
+      className={`rounded-lg p-3 border bg-gradient-to-br ${gradient.bg} ${gradient.border}`}
+      style={{ maxHeight: "90px" }}
     >
-      <h2 className="text-[11px] uppercase tracking-[0.08em] text-[#6B7280] font-semibold mb-4 flex items-center gap-2">
+      <h2 className="text-[10px] uppercase tracking-[0.08em] text-[#6B7280] font-semibold mb-2 flex items-center gap-1.5">
         <div 
-          className="w-2 h-2 rounded-full"
+          className="w-1.5 h-1.5 rounded-full"
           style={{ background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})` }}
         />
         Integrity Monitoring
       </h2>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 gap-4 items-center">
         {/* Integrity Score */}
-        <div className="flex flex-col items-center">
-          <div className="relative">
-            <div 
-              className="absolute inset-0 blur-xl rounded-full opacity-30"
-              style={{ background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})` }}
-            />
-            <IntegrityRing score={proctoring.integrityScore} gradient={gradient} />
-          </div>
-          <p className="mt-2 text-sm font-semibold text-[#1E2A4A]">
+        <div className="flex items-center gap-3">
+          <IntegrityRing score={proctoring.integrityScore} gradient={gradient} />
+          <p className="text-[12px] font-semibold text-[#1E2A4A]">
             Integrity Score
           </p>
         </div>
@@ -100,28 +95,25 @@ export function CardProctoringCompact({ proctoring }: CardProctoringCompactProps
         {/* Risk Level */}
         <div className="flex flex-col items-center justify-center">
           <span
-            className="px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider text-white shadow-lg"
+            className="px-4 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-white"
             style={{ 
-              background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})`,
-              boxShadow: `0 4px 14px ${gradient.from}40`
+              background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})`
             }}
           >
             {proctoring.riskLevel}
           </span>
-          <p className="mt-3 text-sm font-semibold text-[#1E2A4A]">Risk Level</p>
+          <p className="mt-1 text-[11px] font-semibold text-[#1E2A4A]">Risk Level</p>
         </div>
 
         {/* Total Violations */}
         <div className="flex flex-col items-center justify-center">
-          <div className="relative">
-            <p 
-              className="text-5xl font-bold"
-              style={{ color: gradient.from }}
-            >
-              {proctoring.totalViolations}
-            </p>
-          </div>
-          <p className="mt-2 text-sm font-semibold text-[#1E2A4A]">
+          <p 
+            className="text-[28px] font-bold"
+            style={{ color: gradient.from }}
+          >
+            {proctoring.totalViolations}
+          </p>
+          <p className="text-[11px] font-semibold text-[#1E2A4A]">
             Total Violations
           </p>
         </div>

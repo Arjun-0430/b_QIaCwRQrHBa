@@ -45,18 +45,19 @@ function MetricTile({
 
   return (
     <div
-      className={`rounded-xl p-4 bg-gradient-to-br ${colors.bg} border ${colors.border} relative overflow-hidden transition-all hover:shadow-md`}
+      className={`rounded-lg p-2.5 bg-gradient-to-br ${colors.bg} border ${colors.border} relative overflow-hidden`}
+      style={{ height: "60px" }}
     >
       <div 
-        className="absolute top-0 left-0 w-1 h-full"
+        className="absolute top-0 left-0 w-0.5 h-full"
         style={{ background: `linear-gradient(180deg, ${alertColors.from}, ${alertColors.to})` }}
       />
-      <p className="text-[10px] uppercase tracking-[0.08em] text-[#6B7280] mb-1.5 font-semibold">
+      <p className="text-[9px] uppercase tracking-[0.08em] text-[#6B7280] mb-0.5 font-semibold">
         {label}
       </p>
-      <p className="text-xl font-bold text-[#1E2A4A] flex items-baseline gap-1">
+      <p className="text-[18px] font-bold text-[#1E2A4A] flex items-baseline gap-0.5">
         <span style={{ color: hasValue ? alertColors.from : "#1E2A4A" }}>{value}</span>
-        {suffix && <span className="text-sm font-normal text-[#6B7280]">{suffix}</span>}
+        {suffix && <span className="text-[11px] font-normal text-[#6B7280]">{suffix}</span>}
       </p>
     </div>
   );
@@ -68,43 +69,42 @@ export function CardProctoringDetailed({ proctoring }: CardProctoringDetailedPro
   const metrics = [
     { label: "Tab Switches", value: proctoring.tabSwitches },
     { label: "Rapid Answers", value: proctoring.rapidAnswers },
-    { label: "Face Absent Count", value: proctoring.faceAbsentCount },
-    { label: "Face Absent Duration", value: proctoring.faceAbsentDuration, suffix: "sec" },
+    { label: "Face Absent", value: proctoring.faceAbsentCount },
+    { label: "Face Absent Dur.", value: proctoring.faceAbsentDuration, suffix: "s" },
     { label: "Multiple Faces", value: proctoring.multipleFacesCount },
-    { label: "Gaze Away Count", value: proctoring.gazeAwayCount },
-    { label: "Gaze Away Duration", value: proctoring.gazeAwayDuration, suffix: "sec" },
-    { label: "Head Down Count", value: proctoring.headDownCount },
+    { label: "Gaze Away", value: proctoring.gazeAwayCount },
+    { label: "Gaze Away Dur.", value: proctoring.gazeAwayDuration, suffix: "s" },
+    { label: "Head Down", value: proctoring.headDownCount },
     { label: "Voice Detected", value: proctoring.voiceDetectedCount },
-    { label: "Copy/Paste Attempts", value: proctoring.copyPasteAttempts },
+    { label: "Copy/Paste", value: proctoring.copyPasteAttempts },
     { label: "Fullscreen Exits", value: proctoring.fullscreenExits },
     { label: "Total Violations", value: proctoring.totalViolations },
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "220px" }}>
       {/* Header */}
-      <div className="px-6 py-4 bg-gradient-to-r from-slate-800 to-slate-700 flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-white flex items-center gap-2">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-300">
+      <div className="px-4 py-2 bg-gradient-to-r from-slate-800 to-slate-700 flex items-center justify-between">
+        <h2 className="text-[12px] font-semibold text-white flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-slate-300">
             <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
             <circle cx="12" cy="12" r="3" />
           </svg>
-          Detailed Proctoring Analysis
+          Proctoring Analysis
         </h2>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] uppercase tracking-[0.08em] text-slate-400">
-              Integrity Score
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[9px] uppercase tracking-[0.08em] text-slate-400">
+              Integrity
             </span>
-            <span className="text-lg font-bold text-white">
+            <span className="text-[14px] font-bold text-white">
               {proctoring.integrityScore}%
             </span>
           </div>
           <span
-            className="px-3 py-1.5 rounded-full text-xs font-bold uppercase text-white shadow-lg"
+            className="px-2 py-1 rounded-full text-[10px] font-bold uppercase text-white"
             style={{ 
-              background: `linear-gradient(135deg, ${riskGradient.from}, ${riskGradient.to})`,
-              boxShadow: `0 2px 8px ${riskGradient.from}40`
+              background: `linear-gradient(135deg, ${riskGradient.from}, ${riskGradient.to})`
             }}
           >
             {proctoring.riskLevel} Risk
@@ -112,9 +112,9 @@ export function CardProctoringDetailed({ proctoring }: CardProctoringDetailedPro
         </div>
       </div>
 
-      {/* Metrics Grid */}
-      <div className="p-5">
-        <div className="grid grid-cols-4 gap-3">
+      {/* Metrics Grid - 4 columns x 3 rows */}
+      <div className="p-3">
+        <div className="grid grid-cols-4 gap-2">
           {metrics.map((metric, index) => (
             <MetricTile
               key={metric.label}

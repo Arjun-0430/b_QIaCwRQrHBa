@@ -26,24 +26,24 @@ function InsightBlock({
   text: string;
 }) {
   return (
-    <div className={`rounded-xl p-4 bg-gradient-to-br ${style.bg} border ${style.border} hover:shadow-md transition-all`}>
-      <div className="flex items-start gap-3">
+    <div className={`rounded-lg p-3 bg-gradient-to-br ${style.bg} border ${style.border}`} style={{ minHeight: "80px" }}>
+      <div className="flex items-start gap-2">
         <div 
-          className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm"
+          className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
           style={{ background: `linear-gradient(135deg, ${style.from}, ${style.to})` }}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d={style.icon} />
           </svg>
         </div>
         <div className="flex-1 min-w-0">
           <h4 
-            className="font-bold text-[13px] mb-1"
+            className="font-bold text-[11px] mb-0.5"
             style={{ color: style.from }}
           >
             {label}
           </h4>
-          <p className="text-[#6B7280] text-sm leading-relaxed">{text}</p>
+          <p className="text-[#6B7280] text-[11px] leading-snug line-clamp-3">{text}</p>
         </div>
       </div>
     </div>
@@ -62,11 +62,11 @@ export function CardPerformanceAnalysis({
       : insightStyles[5];
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-      {/* Header with gradient */}
-      <div className="px-6 py-4 bg-gradient-to-r from-[#4F46E5] to-[#818CF8]">
-        <h2 className="text-sm font-semibold text-white flex items-center gap-2">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-200">
+    <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white" style={{ maxHeight: "280px" }}>
+      {/* Header */}
+      <div className="px-4 py-2 bg-gradient-to-r from-[#4F46E5] to-[#818CF8]">
+        <h2 className="text-[12px] font-semibold text-white flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-200">
             <circle cx="12" cy="12" r="10" />
             <path d="M12 6v6l4 2" />
           </svg>
@@ -74,7 +74,7 @@ export function CardPerformanceAnalysis({
         </h2>
       </div>
 
-      <div className="p-5 grid grid-cols-2 gap-4">
+      <div className="p-3 grid grid-cols-2 gap-2">
         <InsightBlock
           style={insightStyles[0]}
           label="Performance Summary"

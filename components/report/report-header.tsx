@@ -29,55 +29,41 @@ function formatDate(dateString: string): string {
 
 export function ReportHeader({ candidate, attempt, meta }: ReportHeaderProps) {
   return (
-    <header className="h-[72px] bg-[#f5f5f7] px-6 flex items-center justify-between relative border-b border-[#d2d2d7]/60"
-      style={{
-        boxShadow: "inset 0 -1px 0 rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02)"
-      }}
-    >
+    <header className="report-header">
       {/* Left side - Logo and Report Title */}
-      <div className="flex items-center gap-5">
-        {/* Logo Card with Neumorphic Effect */}
-        <div 
-          className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center bg-[#f5f5f7] overflow-hidden"
-          style={{
-            boxShadow: "6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.9), inset 1px 1px 1px rgba(255,255,255,0.5)"
-          }}
-        >
+      <div className="flex items-center gap-4">
+        {/* Logo on white background */}
+        <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center overflow-hidden">
           <Image
             src="/logo.png"
             alt="Logo"
-            width={40}
-            height={40}
+            width={32}
+            height={32}
             className="object-contain"
           />
         </div>
         
         {/* Title */}
         <div className="flex flex-col">
-          <span className="text-[#1d1d1f] text-[17px] font-semibold tracking-[-0.022em]">
+          <span className="text-white text-[15px] font-semibold tracking-[-0.01em]">
             Candidate Assessment Report
           </span>
-          <span className="text-[#86868b] text-[12px] font-medium tracking-[-0.01em]">
+          <span className="text-white/70 text-[11px] font-medium">
             {meta.assessmentName}
           </span>
         </div>
       </div>
 
       {/* Right side - Candidate Info */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         <div className="text-right">
-          <p className="text-[#1d1d1f] font-semibold text-[15px] tracking-[-0.016em]">{candidate.name}</p>
-          <p className="text-[#86868b] text-[12px] font-medium">
+          <p className="text-white text-[13px] font-semibold">{candidate.name}</p>
+          <p className="text-white/65 text-[11px]">
             {formatDate(attempt.startTime)}
           </p>
         </div>
         {candidate.photoUrl ? (
-          <div 
-            className="w-[44px] h-[44px] rounded-full overflow-hidden bg-[#f5f5f7]"
-            style={{
-              boxShadow: "4px 4px 8px rgba(0,0,0,0.08), -4px -4px 8px rgba(255,255,255,0.9)"
-            }}
-          >
+          <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-white/40">
             <img
               src={candidate.photoUrl}
               alt={candidate.name}
@@ -85,13 +71,8 @@ export function ReportHeader({ candidate, attempt, meta }: ReportHeaderProps) {
             />
           </div>
         ) : (
-          <div 
-            className="w-[44px] h-[44px] rounded-full bg-gradient-to-br from-[#007aff] to-[#5856d6] flex items-center justify-center"
-            style={{
-              boxShadow: "4px 4px 8px rgba(0,0,0,0.08), -4px -4px 8px rgba(255,255,255,0.9)"
-            }}
-          >
-            <span className="text-white font-semibold text-[13px] tracking-[-0.01em]">
+          <div className="w-9 h-9 rounded-full bg-white/15 border-2 border-white/40 flex items-center justify-center">
+            <span className="text-white font-semibold text-[11px]">
               {getInitials(candidate.name)}
             </span>
           </div>

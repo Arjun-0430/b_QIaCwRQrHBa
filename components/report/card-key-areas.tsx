@@ -13,48 +13,46 @@ const areaColors = [
 ];
 
 export function CardKeyAreas({ keyAreas }: CardKeyAreasProps) {
+  // Ensure we display all 3 items
+  const displayAreas = keyAreas.slice(0, 3);
+  
   return (
-    <div className="relative overflow-hidden rounded-xl border border-amber-200 bg-white shadow-sm">
+    <div className="relative overflow-hidden rounded-lg border border-amber-200 bg-white" style={{ maxHeight: "180px" }}>
       {/* Header with gradient */}
-      <div className="px-6 py-4 bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+      <div className="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 flex items-center gap-2">
+        <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
             <path d="M12 20h9" />
             <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
           </svg>
         </div>
-        <h2 className="text-sm font-semibold text-white">
+        <h2 className="text-[12px] font-semibold text-white">
           Key Areas to Develop
         </h2>
       </div>
 
-      {/* Areas List */}
-      <div className="p-5 space-y-3">
-        {keyAreas.map((area, index) => {
+      {/* Areas List - Compact */}
+      <div className="p-3 flex gap-2">
+        {displayAreas.map((area, index) => {
           const colors = areaColors[index % areaColors.length];
           
           return (
             <div
               key={area.area}
-              className={`flex items-start gap-4 rounded-xl p-4 bg-gradient-to-r ${colors.bg} border ${colors.border} transition-all hover:shadow-md`}
+              className={`flex-1 flex items-start gap-2 rounded-lg p-2 bg-gradient-to-r ${colors.bg} border ${colors.border}`}
             >
               <div 
-                className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-lg"
+                className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
                 style={{ 
-                  background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`,
-                  boxShadow: `0 4px 12px ${colors.from}40`
+                  background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`
                 }}
               >
-                <span className="text-white font-bold text-sm">{index + 1}</span>
+                <span className="text-white font-bold text-[10px]">{index + 1}</span>
               </div>
-              <div className="flex-1">
-                <h3 className="font-bold text-[#1E2A4A] text-sm">{area.area}</h3>
-                <p className="text-[#6B7280] text-sm mt-1 leading-relaxed">{area.reason}</p>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-[#1E2A4A] text-[12px] leading-tight">{area.area}</h3>
+                <p className="text-[#6B7280] text-[11px] mt-0.5 leading-tight line-clamp-2">{area.reason}</p>
               </div>
-              <div 
-                className="w-1.5 h-full min-h-[48px] rounded-full self-stretch"
-                style={{ background: `linear-gradient(180deg, ${colors.from}, ${colors.to})` }}
-              />
             </div>
           );
         })}
