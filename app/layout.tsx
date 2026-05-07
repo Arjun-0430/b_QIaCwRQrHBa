@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
+const geist = Geist({ 
   subsets: ["latin"],
-  variable: "--font-inter"
+  variable: "--font-geist"
 });
 
 export const metadata: Metadata = {
-  title: 'Candidate Assessment Report | COGNIQUE',
+  title: 'Candidate Assessment Report',
   description: 'Professional Candidate Assessment Report - Enterprise Grade Recruitment Analytics',
   generator: 'v0.app',
   icons: {
@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-[#FAFAFA]">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="en" className="bg-[#f5f5f7]">
+      <body className={`${geist.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

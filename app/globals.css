@@ -4,74 +4,69 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Corporate Assessment Report Design System - Colorful Edition */
-  --navy: #1E2A4A;
-  --navy-light: #2D3E6A;
-  --teal: #0D7377;
-  --teal-light: #14B8A6;
-  --amber: #D97706;
-  --amber-light: #FBBF24;
-  --alert: #DC2626;
-  --alert-light: #F87171;
-  --positive: #16A34A;
-  --positive-light: #4ADE80;
-  --indigo: #4F46E5;
-  --indigo-light: #818CF8;
-  --purple: #7C3AED;
-  --purple-light: #A78BFA;
-  --rose: #E11D48;
-  --rose-light: #FB7185;
-  --sky: #0284C7;
-  --sky-light: #38BDF8;
-  --page-bg: #FAFAFA;
-  --card-bg: #FFFFFF;
-  --card-border: #E5E7EB;
-  --body-text: #111827;
-  --secondary-text: #6B7280;
+  /* Apple-Inspired Design System */
+  --apple-gray-1: #f5f5f7;
+  --apple-gray-2: #e8e8ed;
+  --apple-gray-3: #d2d2d7;
+  --apple-gray-4: #86868b;
+  --apple-gray-5: #6e6e73;
+  --apple-gray-6: #1d1d1f;
   
-  /* Gradient definitions */
-  --gradient-navy: linear-gradient(135deg, #1E2A4A 0%, #2D3E6A 100%);
-  --gradient-teal: linear-gradient(135deg, #0D7377 0%, #14B8A6 100%);
-  --gradient-amber: linear-gradient(135deg, #D97706 0%, #FBBF24 100%);
-  --gradient-positive: linear-gradient(135deg, #16A34A 0%, #4ADE80 100%);
-  --gradient-indigo: linear-gradient(135deg, #4F46E5 0%, #818CF8 100%);
-  --gradient-purple: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
-  --gradient-rose: linear-gradient(135deg, #E11D48 0%, #FB7185 100%);
-  --gradient-sky: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%);
+  --apple-blue: #007aff;
+  --apple-blue-light: #5ac8fa;
+  --apple-green: #34c759;
+  --apple-orange: #ff9500;
+  --apple-red: #ff3b30;
+  --apple-purple: #5856d6;
+  --apple-pink: #ff2d55;
+  --apple-teal: #5ac8fa;
+  --apple-indigo: #5856d6;
   
-  --background: #FAFAFA;
-  --foreground: #111827;
-  --card: #FFFFFF;
-  --card-foreground: #111827;
-  --popover: #FFFFFF;
-  --popover-foreground: #111827;
-  --primary: #1E2A4A;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F9FAFB;
-  --secondary-foreground: #1E2A4A;
-  --muted: #F3F4F6;
-  --muted-foreground: #6B7280;
-  --accent: #0D7377;
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #E5E7EB;
-  --input: #E5E7EB;
-  --ring: #0D7377;
-  --chart-1: #0D7377;
-  --chart-2: #16A34A;
-  --chart-3: #D97706;
-  --chart-4: #1E2A4A;
-  --chart-5: #DC2626;
-  --radius: 0.5rem;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #111827;
-  --sidebar-primary: #1E2A4A;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F3F4F6;
-  --sidebar-accent-foreground: #1E2A4A;
-  --sidebar-border: #E5E7EB;
-  --sidebar-ring: #0D7377;
+  /* Neumorphism Shadows */
+  --neu-shadow-light: -6px -6px 12px rgba(255, 255, 255, 0.9);
+  --neu-shadow-dark: 6px 6px 12px rgba(0, 0, 0, 0.08);
+  --neu-shadow-inset: inset 2px 2px 4px rgba(0, 0, 0, 0.05), inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+  
+  /* Page dimensions */
+  --page-bg: #f5f5f7;
+  --card-bg: #ffffff;
+  --card-border: #e8e8ed;
+  --body-text: #1d1d1f;
+  --secondary-text: #86868b;
+  
+  --background: #f5f5f7;
+  --foreground: #1d1d1f;
+  --card: #ffffff;
+  --card-foreground: #1d1d1f;
+  --popover: #ffffff;
+  --popover-foreground: #1d1d1f;
+  --primary: #007aff;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f7;
+  --secondary-foreground: #1d1d1f;
+  --muted: #e8e8ed;
+  --muted-foreground: #86868b;
+  --accent: #5856d6;
+  --accent-foreground: #ffffff;
+  --destructive: #ff3b30;
+  --destructive-foreground: #ffffff;
+  --border: #d2d2d7;
+  --input: #e8e8ed;
+  --ring: #007aff;
+  --chart-1: #007aff;
+  --chart-2: #34c759;
+  --chart-3: #ff9500;
+  --chart-4: #5856d6;
+  --chart-5: #ff3b30;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1d1d1f;
+  --sidebar-primary: #007aff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f5f7;
+  --sidebar-accent-foreground: #1d1d1f;
+  --sidebar-border: #e8e8ed;
+  --sidebar-ring: #007aff;
 }
 
 .dark {
@@ -110,8 +105,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: var(--font-geist), 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -156,23 +151,126 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Print Styles for Assessment Report */
+/* Neumorphism Utility Classes */
+.neu-card {
+  background: var(--apple-gray-1);
+  border-radius: 16px;
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.06),
+    -6px -6px 12px rgba(255, 255, 255, 0.8);
+}
+
+.neu-card-inset {
+  background: var(--apple-gray-1);
+  border-radius: 12px;
+  box-shadow: 
+    inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+}
+
+.neu-button {
+  background: linear-gradient(145deg, #fafafa, #e8e8e8);
+  border-radius: 12px;
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.06),
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.neu-button:hover {
+  box-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.06),
+    -2px -2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.neu-button:active {
+  box-shadow: 
+    inset 2px 2px 4px rgba(0, 0, 0, 0.05),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+/* A4 Print Styles - 210mm x 297mm (794px x 1123px at 96dpi) */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
 @media print {
+  html, body {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
   .no-print { 
     display: none !important; 
   }
+  
   .page { 
-    margin: 0; 
-    box-shadow: none; 
-    break-after: page; 
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    position: relative !important;
   }
-  body { 
-    background: white; 
+  
+  .page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
   }
-  html {
-    background: white;
+  
+  /* Ensure content fits within A4 */
+  main {
+    width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Preserve backgrounds for print */
+  header, footer, .bg-gradient-to-b, [style*="background"] {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  /* Scale content containers to fit */
+  .page > div {
+    max-width: 100% !important;
+  }
+  
+  /* Ensure flex containers don't overflow */
+  .flex-1 {
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Screen preview to match A4 aspect ratio (794px x 1123px at 96dpi) */
+@media screen {
+  .page {
+    width: 100%;
+    max-width: 794px;
+    min-height: 1123px;
   }
 }
